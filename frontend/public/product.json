@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Black Coffee",
+        "image": "https://i.ibb.co/s150R2K/product1.jpg",
+        "description": "Black coffee is a popular beverage that is made from roasted coffee beans and hot water, without any additional ingredients such as milk or sugar. It is often enjoyed for its bold and bitter flavor, as well as its energizing effects due to the caffeine content. Black coffee is a versatile drink that can be served hot or cold, and it can be enjoyed at any time of day. Whether you're starting your morning off with a strong cup of coffee, or you're enjoying an afternoon pick-me-up, black coffee is a classic and timeless choice.",
+        "price": 200
+    },
+    {
+        "name": "Could Coffee",
+        "image": "https://i.ibb.co/jR93wFR/product5.png",
+        "description": "A smooth and refreshing beverage made by steeping coffee grounds in cold water for several hours. This results in a less acidic and more mellow taste compared to traditional hot coffee. Cold brew coffee can be enjoyed with milk or sugar if desired, and is often served over ice. ",
+        "price": 569
+    },
+    {
+        "name": "Milk Coffee",
+        "image": "https://i.ibb.co/sVhgD69/product2.png",
+        "description": "A coffee-based beverage that includes milk, often served as a latte or cappuccino. The addition of milk gives the drink a creamy and smooth texture, and can be enjoyed with various flavors such as vanilla or caramel. Milk coffee is a popular choice for those who prefer a less bitter taste in their coffee.",
+        "price": 340
+    },
+    {
+        "name": "Black Tea",
+        "image": "https://i.ibb.co/hgz0xCD/product3.jpg",
+        "description": "A popular tea made from the dried leaves of the Camellia sinensis plant, typically served hot with milk or sugar. Black tea has a bold and robust flavor, and is known for its energizing effects due to the caffeine content",
+        "price": 110
+    },
+    {
+        "name": "Green Tea",
+        "image": "https://i.ibb.co/yYwn7LL/product4.jpg",
+        "description": " type of tea made from unfermented tea leaves, which gives it a light and delicate flavor. Green tea is often enjoyed for its health benefits, as it is rich in antioxidants and other nutrients. It can be enjoyed hot or cold, and is sometimes flavored with lemon or honey.",
+        "price": 150
+    },
+    {
+        "name": "TeaRedolent Coffee",
+        "image": "https://i.ibb.co/h1Qh79g/product0.png",
+        "description": "A premium coffee blend that is known for its aromatic and rich flavor profile. Redolent coffee is often made from high-quality Arabica coffee beans, which are roasted to perfection for a smooth and balanced taste. This type of coffee is usually more expensive than regular coffee, due to its premium quality and unique flavor.",
+        "price": 980
+    }
+]
