@@ -1,0 +1,56 @@
+@import "./variables";
+@import "./reset";
+@import "./mixins";
+
+.container {
+    // width: $container-width;
+    // max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .btn-primary {
+    @include btn-common($primary-color, $dark-color, $danger-color,$danger-color);
+    &:hover {
+        @include btn-common($primary-color, $dark-color, $lite-color,$primary-color);
+    }
+  }
+  
+  .btn-outline {
+    @include btn-common($primary-color, $dark-color, $lite-color,$primary-color);
+    &:hover {
+        @include btn-common($primary-color, $dark-color, $danger-color,$danger-color);
+    }
+  }
+  
+  .section-title {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 45px;
+    color: #333333;
+  
+    &::after {
+      content: "";
+      width: 110px;
+      height: 5px;
+      margin: 15px 0 30px;
+      background-color: #dddddd;
+      display: block;
+    }
+  }
+  
+  .section-title.center {
+    text-align: center;
+  
+    &::after {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  .section-title > span {
+    color: $primary-color;
+  }
+  

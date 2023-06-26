@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { RouterProvider } from 'react-router-dom'
 import { router } from './Routs/Routs/Routs';
 import { Toaster } from 'react-hot-toast';

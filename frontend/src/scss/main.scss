@@ -1,0 +1,88 @@
+@import "./variables";
+@import "./reset";
+@import "./mixins";
+@import "./utils";
+
+// HERO
+.hero {
+  width: 100%;
+  height: 90vh;
+  text-align: center;
+  @include flex(center, center, column, no-wrap);
+}
+
+.hero h2 {
+  color: $danger-color;
+  font-size: 2.2rem;
+}
+
+.hero p {
+  color: $lite-color;
+  font-size: 1.2rem;
+  margin-top: 1rem; 
+  margin-bottom: 5rem; 
+}
+
+.hero-btns {
+  display: flex;
+  gap: 3rem;
+}
+
+
+main {
+  margin-top: 136.6px;
+
+  @include sm {
+    margin-top: 100px;
+  }
+}
+
+// CONTACT
+
+.contact {
+  margin: 50px 0;
+  background-color: $secondary-color;
+  color: #ffffff;
+
+  @include md {
+    @include grid(2);
+  }
+
+  .google-map {
+    width: 100%;
+    min-height: 400px;
+  }
+
+  .contact-form {
+    width: 500px;
+    max-width: 100%;
+    padding: 25px;
+    margin: auto;
+
+    .section-title {
+      color: #ffffff;
+    }
+
+    p {
+      margin: 40px 0;
+    }
+
+    input,
+    textarea {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 13px;
+      border: none;
+      outline: none;
+    }
+
+    .btn {
+      background-color: $secondary-color;
+
+      &:hover {
+        background-color: #ffffff;
+      }
+    }
+  }
+}
