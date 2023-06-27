@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { FaBars, FaBox, FaShoppingCart, FaTimes, FaUser } from "react-icons/fa";
 import { AuthContext } from "../Context/AuthProvider/AuthProvider";
 import Brand from "./Brand";
-import "./Navbar.css";
 
 const NavBar = () => {
   const [click, setClick] = useState(false);
@@ -17,9 +16,8 @@ const NavBar = () => {
       <div className={click ? "main-container" : ""} onClick={() => Close()} />
       <nav className="navbar" onClick={(e) => e.stopPropagation()}>
         <div className="nav-container">
-          <Link to="/" className="nav-logo">
-            CodeBucks
-            <i className="fa fa-code"></i>
+          <Link to='/'>
+            <img style={{width: '80px', height: '55px'}} src="/assets/logo.jpg" alt="" srcset="" />
           </Link>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">

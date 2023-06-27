@@ -7,7 +7,7 @@
 
   .signup, .login {
     display: flex;
-    height: 80vh;
+    height: 100vh;
     justify-content: center; /*center vertically */
     align-items: center; /* center horizontally */
     padding: 15px;
@@ -70,7 +70,7 @@
   }
 
   /* submit button */
-    .btn-secendary {
+    .btn-primary {
     height: 100%;
     width: 100%;
     outline: none;
@@ -85,7 +85,7 @@
     padding: .9rem 0;
   }
 
-  .btn-secendary:hover {
+  .btn-primary:hover {
     background: linear-gradient(-135deg, var(--main-blue), var(--main-purple));
   }
 

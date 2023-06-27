@@ -74,7 +74,7 @@ const SignUp = () => {
               />
             </div>
           </div>
-          <button type="submit" className="btn-secendary">Login</button>
+          <button type="submit" className="btn-primary">Login</button>
         </form>
       </div>
     </div>

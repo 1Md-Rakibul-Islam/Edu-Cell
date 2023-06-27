@@ -26,7 +26,7 @@ const Login = () => {
               />
             </div>
           </div>
-          <button type="submit" className="btn-secendary">Register</button>
+          <button type="submit" className="btn-primary">Register</button>
         </form>
       </div>
     </div>
