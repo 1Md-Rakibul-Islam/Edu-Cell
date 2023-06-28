@@ -17,7 +17,7 @@ const UserSchema = mongoose.Schema({
     type: String,
   },
   semester: {
-    type: Number,
+    type: String,
   },
 });
 

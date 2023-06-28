@@ -3,10 +3,10 @@ import UserModel from "../Models/UserModels.js";
 // creating a User
 export const createUser = async (req, res) => {
   const newUser = new UserModel(req.body);
-  // console.log('Users', newUser);
+  console.log('User', req.body);
   try {
     const savedUser = await newUser.save(); // Inserting the new user into the database
-    res.status(200).json(savedUser);
+    res.status(200).json('User created successfully');
   } catch (error) {
     res.status(500).json(error);
   }
