@@ -3,12 +3,12 @@ import "./ContactUs";
 
 const ContactUs = () => {
   return (
-    <section id="contact" class="contact">
-      <div id="map" class="google-map">
+    <section id="contact" className="contact">
+      <div id="map" className="google-map">
         <img src="/assets/contactus.svg" alt="" srcset="" />
       </div>
-      <div class="contact-form">
-        <h1 class="section-title center">Contact Us</h1>
+      <div className="contact-form">
+        <h1 className="section-title center">Contact Us</h1>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut
           praesentium fugiat pariatur, deserunt consequuntur temporibus vel

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Profile.scss"; // Import the SCSS file for styling
+import "./profile.css";
 
 const Profile = () => {
   // Sample user data
@@ -11,28 +11,49 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile">
-      <div className="profile-body">
-        <div className="profile-info">
-          <div>
-            <span className="label">Name:</span>
-            <span className="value">{user.name}</span>
-          </div>
-          <div>
-            <span className="label">Roll:</span>
-            <span className="value">{user.roll}</span>
-          </div>
-          <div>
-            <span className="label">Department:</span>
-            <span className="value">{user.department}</span>
-          </div>
-          <div>
-            <span className="label">Semester:</span>
-            <span className="value">{user.semester}</span>
+    <section> 
+      <div class="profile">
+        <h2 className="section-title center">IDENTITY</h2>
+        <div class="card">
+          <div class="card-body">
+            <table>
+              <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td>:</td>
+                  <td>ImDezCode</td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>:</td>
+                  <td>imdezcode@gmail.com</td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td>:</td>
+                  <td>Bali, Indonesia</td>
+                </tr>
+                <tr>
+                  <td>Hobbies</td>
+                  <td>:</td>
+                  <td>Diving, Reading Book</td>
+                </tr>
+                <tr>
+                  <td>Job</td>
+                  <td>:</td>
+                  <td>Web Developer</td>
+                </tr>
+                <tr>
+                  <td>Skill</td>
+                  <td>:</td>
+                  <td>PHP, HTML, CSS, Java</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

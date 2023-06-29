@@ -9,6 +9,11 @@
     padding-right: 15px;
   }
 
+  .layout {
+    width: 100vw;
+    height: 1000px;
+  }
+
   .btn-primary {
     @include btn-common($primary-color, $dark-color, $danger-color,$danger-color);
     &:hover {
@@ -29,7 +34,6 @@
     font-size: 2.1rem;
     color: $primary-color;
     text-align: center;
-  
     &::after {
       content: "";
       width: 110px;
@@ -38,6 +42,12 @@
       background-color: $secondary-color;
       display: block;
     }
+  }
+  #about {
+    margin: 0px 2rem;
+  }
+  .section-description {
+    text-align: center;
   }
   
   .section-title.center {

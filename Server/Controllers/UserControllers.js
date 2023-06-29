@@ -3,10 +3,25 @@ import UserModel from "../Models/UserModels.js";
 // creating a User
 export const createUser = async (req, res) => {
   const newUser = new UserModel(req.body);
-  console.log('User', req.body);
+  const userEmail = req.body.email;
+  const existingUser = await UserModel.findOne({ email: userEmail });
+  // console.log("User", req.body);
   try {
-    const savedUser = await newUser.save(); // Inserting the new user into the database
-    res.status(200).json('User created successfully');
+    if (existingUser) {
+      return res.status(400).json({ error: "User already exists" });
+    } else {
+
+      
+    // Generate a unique userID
+    const userID = generateUserID();
+
+    // Generate a unique password
+    const password = generatePassword();
+
+
+      const savedUser = await newUser.save(); // Inserting the new user into the database
+      res.status(200).json("User created successfully");
+    }
   } catch (error) {
     res.status(500).json(error);
   }

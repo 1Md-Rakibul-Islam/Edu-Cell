@@ -136,7 +136,7 @@ main {
         background: #2f2f2f;
       }
       &:after {
-        background: #7ab92d;
+        background: $primary-color;
       }
       img {
         box-shadow: 0 0 0 14px #f7f5ec;
@@ -181,8 +181,8 @@ main {
       transition: all 0.3s linear 0s;
     }
     img {
-      width: 100%;
-      height: auto;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       transform: scale(1);
       transition: all 0.9s ease 0s;
