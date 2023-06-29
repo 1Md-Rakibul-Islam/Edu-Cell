@@ -3,12 +3,12 @@ import "./ContactUs";
 
 const ContactUs = () => {
   return (
-    <section class="contact">
+    <section id="contact" class="contact">
       <div id="map" class="google-map">
         <img src="/assets/contactus.svg" alt="" srcset="" />
       </div>
       <div class="contact-form">
-        <h1 class="section-title">Contact Us</h1>
+        <h1 class="section-title center">Contact Us</h1>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut
           praesentium fugiat pariatur, deserunt consequuntur temporibus vel
@@ -18,7 +18,7 @@ const ContactUs = () => {
         <input type="text" placeholder="Your Name" />
         <input type="email" placeholder="Your Email" />
         <textarea cols="30" rows="10" placeholder="Your Message"></textarea>
-        <button type="submit" className="btn-secendary">
+        <button type="submit" className="btn-primary">
           Login{" "}
         </button>
       </div>

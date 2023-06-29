@@ -5,20 +5,27 @@
     --sub-grey: #d9d9d9;
   }
 
-  .signup, .login {
+  .signup,
+  .login {
     display: flex;
     height: 100vh;
-    justify-content: center; /*center vertically */
-    align-items: center; /* center horizontally */
+    justify-content: center;
+    /*center vertically */
+    align-items: center;
+    /* center horizontally */
     padding: 15px;
   }
+
   /* container and form */
   .container {
     max-width: 700px;
     background: var(--main-grey);
+    /* background: transparent; */
+    box-shadow: 0px 5px 20px 2px;
     padding: 30px 40px;
-    border-radius: 20px;
+    border-radius: 10px;
   }
+
   .container .title {
     font-size: 25px;
     font-weight: 500;
@@ -41,6 +48,7 @@
     justify-content: space-between;
     margin: 20px 0 12px 0;
   }
+
   /* inside the form user details */
   form .user__details .input__box {
     width: calc(100% / 2 - 20px);
@@ -52,7 +60,9 @@
     margin-bottom: 5px;
     display: block;
   }
-  .user__details .input__box input, select {
+
+  .user__details .input__box input,
+  select {
     height: 45px;
     width: 100%;
     outline: none;
@@ -70,7 +80,7 @@
   }
 
   /* submit button */
-    .btn-primary {
+  .btn-primary {
     height: 100%;
     width: 100%;
     outline: none;

@@ -34,11 +34,12 @@
     align-items: $align;
     flex-direction: $direction;
     flex-wrap: $wrap;
+    gap: 10px;
   }
   
   // CSS GRID MIXINS
   
-  @mixin grid($columns, $gap: 0px) {
+  @mixin grid($columns, $gap: 0) {
     display: grid;
     grid-gap: $gap;
     grid-template-columns: repeat($columns, 1fr);
@@ -59,3 +60,123 @@
     }
   }
   
+
+  @media screen and (max-width: 960px) {
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      width: 70vw;
+      height: 100vh;
+      border-top: 1px solid #fff;
+      position: absolute;
+      top: 80px;
+      left: -110%;
+      opacity: 1;
+      transition: all 0.5s ease;
+    }
+    .nav-menu.active {
+      background: $dark-color;
+      left: 0px;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 1;
+    }
+    .nav-item {
+      .active {
+        // color: $dark-color;
+        border: none;
+      }
+    }
+    .nav-links {
+      padding: 1.5rem;
+      width: 100%;
+      display: table;
+    }
+    .nav-icon {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-100%, 60%);
+      font-size: 1.8rem;
+      cursor: pointer;
+      // color: $dark-color;
+    }
+    .our-team {
+      margin-bottom: 30px;
+    }
+  }
+  
+
+  
+
+@media screen and (max-width: 960px) {
+	.nav-menu {
+		display: flex;
+		flex-direction: column;
+		width: 70vw;
+    height: 100vh;
+		border-top: 1px solid #fff;
+		position: absolute;
+		top: 80px;
+		left: -110%;
+		opacity: 1;
+		transition: all 0.5s ease;
+    z-index: 50;
+	}
+	.nav-menu.active {
+    background: $dark-color;
+		left: 0px;
+		opacity: 1;
+		transition: all 0.5s ease;
+		z-index: 1;
+	}
+	.nav-item {
+		.active {
+			// color: $dark-color;
+			border: none;
+		}
+	}
+	.nav-links {
+		padding: 1.5rem;
+		width: 100%;
+		display: table;
+	}
+	.nav-icon {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		transform: translate(-100%, 60%);
+		font-size: 1.8rem;
+		cursor: pointer;
+		// color: $dark-color;
+	}
+}
+
+@media (max-width: 880px) {
+  .footer-distributed {
+    font: bold 14px sans-serif;
+    .footer-left {
+      display: block;
+      width: 100%;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .footer-center {
+      display: block;
+      width: 100%;
+      margin-bottom: 40px;
+      text-align: center;
+      i {
+        margin-left: 0;
+      }
+    }
+    .footer-right {
+      display: block;
+      width: 100%;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+  }
+}

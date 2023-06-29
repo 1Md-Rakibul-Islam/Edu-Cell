@@ -11,13 +11,24 @@ const NavBar = () => {
   const handleClick = () => setClick(!click);
   const Close = () => setClick(false);
 
+  const { user, logOut } = useContext(AuthContext);
+
+  const handelLogOut = () => {
+    logOut().then().catch();
+  };
+
   return (
     <div>
       <div className={click ? "main-container" : ""} onClick={() => Close()} />
       <nav className="navbar" onClick={(e) => e.stopPropagation()}>
         <div className="nav-container">
-          <Link to='/'>
-            <img style={{width: '80px', height: '55px'}} src="/assets/logo.jpg" alt="" srcset="" />
+          <Link to="/">
+            <img
+              style={{ width: "60px", height: "60px", borderRadius: "100%" }}
+              src="/assets/logo.jpg"
+              alt=""
+              srcset=""
+            />
           </Link>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
@@ -32,24 +43,64 @@ const NavBar = () => {
             </li>
             <li className="nav-item">
               <Link
-                to="/login"
+                to="/contact"
                 activeClassName="active"
                 className="nav-links"
                 onClick={click ? handleClick : null}
               >
-                Login
+                Contact Us
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                to="/signup"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                Signup
-              </Link>
-            </li>
+            {user?.email ? (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/profile"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a
+                    href="#about"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    About
+                  </a>
+                </li>
+                <button className="btn-outline" onClick={handelLogOut}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/login"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/signup"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    Signup
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
           <div className="nav-icon" onClick={handleClick}>
             {click ? <FaTimes /> : <FaBars />}

@@ -1,0 +1,32 @@
+[
+    {
+        "_id": 1,
+        "name": "Elon Musk",
+        "image": "https://i.ibb.co/s150R2K/product1.jpg",
+        "details": "Known for his audacious vision and relentless drive, Elon Musk has redefined what is possible in multiple industries. As the CEO of SpaceX, he revolutionized space travel by developing reusable rockets, aiming to make humanity a multi-planetary species. Musk also co-founded Tesla, a leading electric vehicle company that has pushed the boundaries of sustainable transportation. With projects like Neuralink and The Boring Company, he continues to explore cutting-edge technologies to transform the way we live."
+    },
+    {
+        "_id": 2,
+        "name": "Sam Altman",
+        "image": "https://i.ibb.co/jR93wFR/product5.png",
+        "details": "Sam Altman is an entrepreneur, investor, and visionary leader in the tech industry. As the former president of Y Combinator, a renowned startup accelerator, he has helped shape the trajectories of numerous successful companies. Altman's own ventures include the creation of OpenAI, an artificial intelligence research lab, and the development of the ambitious project, Worldcoin, aimed at building a global digital currency."
+    },
+    {
+        "_id": 3,
+        "name": "Oprah Winfrey",
+        "image": "https://i.ibb.co/sVhgD69/product2.png",
+        "details": "A media mogul and philanthropist, Oprah Winfrey has become an iconic figure in the entertainment industry. Through her groundbreaking talk show, The Oprah Winfrey Show, she connected with millions of viewers worldwide, offering inspiring stories, insightful conversations, and a platform for positive change. Winfrey's entrepreneurial ventures extend to her own television network, OWN, and her philanthropic efforts, which focus on education, healthcare, and empowerment."
+    },
+    {
+        "_id": 4,
+        "name": "Jeff Bezos",
+        "image": "https://i.ibb.co/hgz0xCD/product3.jpg",
+        "details": "The founder of Amazon, Jeff Bezos, is synonymous with disruptive innovation and relentless customer obsession. He transformed the way we shop and revolutionized e-commerce, turning Amazon into one of the world's largest companies. Bezos expanded his entrepreneurial endeavors by acquiring The Washington Post and founding Blue Origin, a private aerospace company committed to making space travel accessible to all."
+    },
+    {
+        "_id": 5,
+        "name": "Sara Blakely",
+        "image": "https://i.ibb.co/yYwn7LL/product4.jpg",
+        "details": "Sara Blakely is a self-made billionaire and the founder of Spanx, a company that revolutionized the undergarment industry. Blakely's determination and innovative thinking led her to create comfortable and flattering shapewear that quickly gained popularity. As an advocate for female entrepreneurship, she launched the Leg Up program to support and mentor women in business, inspiring a new generation of trailblazers."
+    }
+]

@@ -1,12 +1,80 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./SignUp.css";
+import { addUser } from "../../API/userRequest";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const SignUp = () => {
+  const { createUser, updateUser, loginProvider, setLoading } = useContext(AuthContext);
+
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const googleProvider = new GoogleAuthProvider();
+
+  //   if (token) {
+  //     navigate("/");
+  //   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const { name, roll, email, department, semester, password } =
+      event.target.elements;
+
+    const userData = {
+      name: name.value,
+      roll: roll.value,
+      email: email.value,
+      department: department.value,
+      semester: semester.value,
+      password: password.value,
+    };
+    // console.log(user);
+
+    createUser(email.value, password.value)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        const userInfo = {
+          displayName: name.value,
+          // photoURL: imageData.data.url,
+        };
+        updateUser(userInfo)
+        .then( async () => {
+            await addUser(userData);
+          navigate(from, { replace: true });
+          toast.success("Account created successfully");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // google login
+
+  // const handelGoogleLogin = () => {
+  //   loginProvider(googleProvider)
+  //     .then((result) => {
+  //       const user = result.user;
+  //       // saveUser();
+  //       navigate(from, { replace: true });
+  //     })
+  //     .catch((error) => {
+  //       console.log(errorMessage);
+  //     });
+  // };
+
   return (
     <div className="signup">
       <div className="container">
         <div className="title">Registration</div>
-        <form action="#">
+        <form onSubmit={handleSubmit}>
           <div className="user__details">
             <div className="input__box">
               <span className="details">Full Name</span>
@@ -37,9 +105,9 @@ const SignUp = () => {
             </div>
             <div className="input__box">
               <span className="details">Department</span>
-              <select name="" id="">
-                <option selected value="">
-                  Selecte
+              <select name="department" id="department" required>
+                <option value="" disabled selected>
+                  Select
                 </option>
                 <option value="AI">BSc in AI</option>
                 <option value="CSE">BSc in CSE</option>
@@ -50,11 +118,11 @@ const SignUp = () => {
             </div>
             <div className="input__box">
               <span className="details">Semester</span>
-              <select name="" id="">
-                <option selected value="">
-                  Selecte
+              <select name="semester" id="semester" required>
+                <option value="" disabled selected>
+                  Select
                 </option>
-                <option value="AI">1st</option>
+                <option value="1st">1st</option>
                 <option value="2nd">2nd</option>
                 <option value="3rd">3rd</option>
                 <option value="4th">4th</option>
@@ -74,7 +142,9 @@ const SignUp = () => {
               />
             </div>
           </div>
-          <button type="submit" className="btn-primary">Login</button>
+          <button type="submit" className="btn-primary">
+            Submit
+          </button>
         </form>
       </div>
     </div>

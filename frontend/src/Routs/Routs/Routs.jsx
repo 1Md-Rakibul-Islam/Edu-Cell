@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
-import Home from "../../Pages/Home/Home/Home";
 import SignUp from "../../Pages/SignUp/SignUp";
 import Login from "../../Pages/Login/Login";
 import Page404 from "../../Pages/DisplayError/DisplayError";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Home from "../../Pages/Home/Home";
+import Profile from "../../Pages/Profile/Profile";
+import ContactUs from "../../Components/ContactUs/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -13,19 +15,27 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
       },
       {
         path: "/signup",
-        element: <SignUp></SignUp>,
+        element: <SignUp />,
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: <Login />,
       },
       {
         path: "*",
-        element: <Page404></Page404>,
+        element: <Page404 />,
       },
     ],
   },
