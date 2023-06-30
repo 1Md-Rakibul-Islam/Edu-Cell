@@ -1,32 +1,31 @@
 import mongoose from "mongoose";
 
 const UserSchema = mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+    unique: true
+  },
   name: {
     type: String,
     required: true,
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true, // ensure the email field is unique
-  },
   roll: {
     type: String,
+    required: true
+  },
+  email: {
+    type: String,
+  },
+  password: {
+    type: String,
+    required: true,
   },
   department: {
     type: String,
   },
   semester: {
     type: String,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
   },
 });
 

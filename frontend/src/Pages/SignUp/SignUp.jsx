@@ -4,9 +4,11 @@ import { addUser } from "../../API/userRequest";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import { GoogleAuthProvider } from "firebase/auth";
+import { toast } from "react-hot-toast";
 
 const SignUp = () => {
-  const { createUser, updateUser, loginProvider, setLoading } = useContext(AuthContext);
+  const { createUser, updateUser, loginProvider, setLoading } =
+    useContext(AuthContext);
 
   const [createdUserEmail, setCreatedUserEmail] = useState("");
   const navigate = useNavigate();
@@ -18,12 +20,13 @@ const SignUp = () => {
   //     navigate("/");
   //   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const { name, roll, email, department, semester, password } =
+    const { userId, name, roll, email, department, semester, password } =
       event.target.elements;
 
     const userData = {
+      userId: userId.value,
       name: name.value,
       roll: roll.value,
       email: email.value,
@@ -33,27 +36,33 @@ const SignUp = () => {
     };
     // console.log(user);
 
-    createUser(email.value, password.value)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        const userInfo = {
-          displayName: name.value,
-          // photoURL: imageData.data.url,
-        };
-        updateUser(userInfo)
-        .then( async () => {
-            await addUser(userData);
-          navigate(from, { replace: true });
-          toast.success("Account created successfully");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const res = await addUser(userData);
+    if (res?.status === "success") {
+      toast.success("Account created successfully");
+      // navigate(from, { replace: true });
+    }
+
+    // createUser(email.value, password.value)
+    //   .then((result) => {
+    //     const user = result.user;
+    //     console.log(user);
+    //     const userInfo = {
+    //       displayName: name.value,
+    //       // photoURL: imageData.data.url,
+    //     };
+    //     updateUser(userInfo)
+    //       .then(async () => {
+    //         await addUser(userData);
+    //         navigate(from, { replace: true });
+    //         toast.success("Account created successfully");
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   // google login
@@ -131,6 +140,15 @@ const SignUp = () => {
                 <option value="7th">7th</option>
                 <option value="8th">8th</option>
               </select>
+            </div>
+            <div className="input__box">
+              <span className="details">User ID</span>
+              <input
+                type="userId"
+                name="userId"
+                placeholder="Please provide a uniq User ID"
+                required
+              />
             </div>
             <div className="input__box">
               <span className="details">Password</span>
