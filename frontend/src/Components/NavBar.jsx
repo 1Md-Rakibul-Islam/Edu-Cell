@@ -23,7 +23,7 @@ const NavBar = () => {
 
   // console.log(user);
 
-  const isLogin = window.localStorage.getItem("loggedin")
+  const isLogged = localStorage.getItem('token');
 
   // console.log(isLogin);
 
@@ -61,7 +61,7 @@ const NavBar = () => {
                 Contact Us
               </Link>
             </li>
-            {user || isLogin ? (
+            {isLogged ? (
               <>
                 <li className="nav-item">
                   <Link

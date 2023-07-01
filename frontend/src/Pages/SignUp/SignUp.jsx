@@ -3,7 +3,6 @@ import "./SignUp.css";
 import { addUser } from "../../API/userRequest";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
-import { GoogleAuthProvider } from "firebase/auth";
 import { toast } from "react-hot-toast";
 
 const SignUp = () => {
@@ -13,7 +12,6 @@ const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const googleProvider = new GoogleAuthProvider();
 
   //   if (token) {
   //     navigate("/");

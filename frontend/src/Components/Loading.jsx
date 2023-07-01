@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardLoading = () => {
+const Loading = () => {
   return (
     <main className="">
       Loading....
@@ -8,4 +8,4 @@ const CardLoading = () => {
   );
 };
 
-export default CardLoading;
+export default Loading;

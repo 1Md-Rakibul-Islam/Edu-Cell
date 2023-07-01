@@ -10,12 +10,14 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Home = () => {
   const { user, logOut } = useContext(AuthContext);
+  const isLogged = localStorage.getItem('token');
+
   return (
     <>
       <Header />
       <main>
         {
-          user && <Entrepreneurs />
+          isLogged && <Entrepreneurs />
         }
         <Testimonial />
         <ContactUs />
