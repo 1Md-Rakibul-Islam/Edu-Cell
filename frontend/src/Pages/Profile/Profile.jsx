@@ -90,40 +90,15 @@
 // export default Profile;
 
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./profile.css";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Profile = () => {
-  const [userData, setUserData] = useState(null);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/users/auth', {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-          },
-          body: JSON.stringify({
-            token: window.localStorage.getItem("token"),
-          })
-        });
+  const {user, loading} = useContext(AuthContext);
 
-        if (response.ok) {
-          const data = await response.json();
-          setUserData(data.data);
-        } else {
-          throw new Error('Failed to fetch user data');
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchUserData();
-  }, []);
+  // console.log(user);
 
   return (
     <section>
@@ -131,43 +106,33 @@ const Profile = () => {
         <h2 className="section-title center">IDENTITY</h2>
         <div className="card">
           <div className="card-body">
-            {userData ? (
+            {user ? (
               <table>
                 <tbody>
                   <tr>
                     <td>ID</td>
                     <td>:</td>
-                    <td>{userData.userId}</td>
+                    <td>{user.userId}</td>
                   </tr>
                   <tr>
                     <td>Name</td>
                     <td>:</td>
-                    <td>{userData.name}</td>
+                    <td>{user.name}</td>
                   </tr>
                   <tr>
                     <td>Email</td>
                     <td>:</td>
-                    <td>{userData.email}</td>
+                    <td>{user.email}</td>
                   </tr>
                   <tr>
-                    <td>Address</td>
+                    <td>Roll</td>
                     <td>:</td>
-                    <td>{userData.address}</td>
+                    <td>{user.roll}</td>
                   </tr>
                   <tr>
-                    <td>Hobbies</td>
+                    <td>Semester</td>
                     <td>:</td>
-                    <td>{userData.hobbies}</td>
-                  </tr>
-                  <tr>
-                    <td>Job</td>
-                    <td>:</td>
-                    <td>{userData.job}</td>
-                  </tr>
-                  <tr>
-                    <td>Skill</td>
-                    <td>:</td>
-                    <td>{userData.skill}</td>
+                    <td>{user.semester}</td>
                   </tr>
                 </tbody>
               </table>

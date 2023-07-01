@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { loginUser } from "../../API/userRequest";
-
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+  const { signIn, loading } = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,24 +19,17 @@ const Login = () => {
 
     const userData = {
       userId,
-      password
+      password,
     };
     // console.log(user);
-
-    const {data} = await loginUser(userData);
-    window.localStorage.setItem('token', data?.data);
-    console.log(data.data);
-    if (data?.status === "success") {
-      window.localStorage.setItem('token', data?.data);
-      toast.success("Login Successfully");
-      navigate('/profile');
-      // navigate(from, { replace: true });
+    await signIn(userData);
+    if (window.localStorage.getItem("loggedin")) {
+    toast.success("Login Successfully");
+    navigate(from, { replace: true });
     }
-
     event.preventDefault();
   };
 
-  
   // console.log(user);
 
   return (
@@ -76,7 +70,6 @@ const Login = () => {
 };
 
 export default Login;
-
 
 // import React, { useContext, useEffect, useState } from "react";
 // import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -119,7 +112,6 @@ export default Login;
 //     event.preventDefault();
 //   };
 
-  
 //   const handleLogout = async () => {
 //     await supabase.auth.signOut();
 //   }
@@ -128,7 +120,7 @@ export default Login;
 //     await supabase.auth.resetPasswordForEmail('rakibul9bd@gmail.com', {
 //       redirectTo: 'http://localhost:5173/login',
 //     })
-    
+
 //   }
 
 //   const handleConfirm = async () => {

@@ -14,8 +14,18 @@ const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const handelLogOut = () => {
-    logOut().then().catch();
+    logOut();
   };
+
+  // const handelLogOut = () => {
+  //   logOut().then().catch();
+  // };
+
+  // console.log(user);
+
+  const isLogin = window.localStorage.getItem("loggedin")
+
+  // console.log(isLogin);
 
   return (
     <div>
@@ -51,7 +61,7 @@ const NavBar = () => {
                 Contact Us
               </Link>
             </li>
-            {user?.email ? (
+            {user || isLogin ? (
               <>
                 <li className="nav-item">
                   <Link
