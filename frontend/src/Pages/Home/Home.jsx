@@ -10,7 +10,6 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Home = () => {
   const { user, logOut } = useContext(AuthContext);
-
   return (
     <>
       <Header />

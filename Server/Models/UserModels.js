@@ -4,7 +4,12 @@ const UserSchema = mongoose.Schema({
   userId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+  },
+  serialNumber: {
+    type: Number,
+    required: true,
+    default: 0,
   },
   name: {
     type: String,
@@ -12,7 +17,7 @@ const UserSchema = mongoose.Schema({
   },
   roll: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
@@ -27,7 +32,9 @@ const UserSchema = mongoose.Schema({
   semester: {
     type: String,
   },
-});
+},
+{timestamp: true}
+);
 
 const UserModel = mongoose.model("users", UserSchema);
 export default UserModel;
