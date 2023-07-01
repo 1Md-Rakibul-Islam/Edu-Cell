@@ -46,7 +46,7 @@ export const createUser = async (req, res) => {
       await newUser.save();
 
       // Send the user's login details to their email
-      // sendEmail(email, userId, password);
+      await sendEmail(email, userId, password);
 
       return res.status(200).json({ status: "success", userId, password });
     // }
@@ -123,102 +123,6 @@ export const getAuthData = async (req, res) => {
   }
 };
 
-// Create a new user
-// router.post('/create', async (req, res) => {
-//   const { name, email } = req.body;
-
-//   try {
-//     const existingUser = await UserModel.findOne({ email });
-
-//     if (existingUser) {
-//       return res.status(400).json({ status: 'User already exists' });
-//     }
-
-//     // Generate a unique ID with serial number
-//     const userId = await generateUniqueID();
-
-//     // Generate a unique password
-//     const password = generateUniquePassword();
-
-//     // Hash the password
-//     const hashedPassword = await bcryptjs.hash(password, 10);
-
-//     const newUser = new UserModel({
-//       userId,
-//       name,
-//       email,
-//       password: hashedPassword,
-//     });
-
-//     await newUser.save();
-
-//     // Send the user's login details to their email
-//     sendEmail(email, userId, password);
-
-//     return res.status(200).json({ status: 'success', userId, password });
-//   } catch (error) {
-//     return res.status(500).json(error);
-//   }
-// });
-
-// // Generate a unique ID with serial number
-// const generateUniqueID = async () => {
-//   // Get the latest user with the highest serial number
-//   const latestUser = await UserModel.findOne().sort({ serialNumber: -1 });
-//   const latestSerialNumber = latestUser ? latestUser.serialNumber : 0;
-
-//   // Generate a unique ID with serial number
-//   const uniqueID = `${uuidv4()}-${latestSerialNumber + 1}`;
-
-//   return uniqueID;
-// };
-
-// // Generate a unique password
-// const generateUniquePassword = () => {
-//   const passwordLength = 10;
-//   const allowedCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-//   let password = '';
-
-//   for (let i = 0; i < passwordLength; i++) {
-//     const randomIndex = Math.floor(Math.random() * allowedCharacters.length);
-//     password += allowedCharacters.charAt(randomIndex);
-//   }
-
-//   return password;
-// };
-
-// // Send email with user's login details
-// const sendEmail = async (email, userId, password) => {
-//   // Create a Nodemailer transporter
-//   const transporter = nodemailer.createTransport({
-//     host: 'smtp.mailtrap.io',
-//     port: 2525,
-//     auth: {
-//       user: 'YOUR_MAILTRAP_USERNAME',
-//       pass: 'YOUR_MAILTRAP_PASSWORD',
-//     },
-//   });
-
-//   // Create the email message
-//   const message = {
-//     from: 'YOUR_EMAIL_ADDRESS',
-//     to: email,
-//     subject: 'Login Details',
-//     text: `Your login details:\nUser ID: ${userId}\nPassword: ${password}`,
-//   };
-
-//   // Send the email
-//   await transporter.sendMail(message, (err, info) => {
-//     if (err) {
-//       console.error(err);
-//     } else {
-//       console.log('Email sent: ' + info.response);
-//     }
-//   });
-// };
-
-// export default router;
-
 // Update a User
 export const updateUser = async (req, res) => {
   const userId = req.params.id;
@@ -242,42 +146,6 @@ export const updateUser = async (req, res) => {
   }
 };
 
-export const getUser = async (req, res) => {
-  const userEmail = req.query.email;
-  // console.log(userEmail);
-
-  try {
-    const user = await UserModel.findOne({ email: userEmail });
-    if (user) {
-      res.status(200).json({
-        result: user,
-        message: "Success",
-      });
-    } else {
-      res.status(404).json("No such User");
-    }
-  } catch (error) {
-    res.status(500).json(error);
-  }
-};
-
-export const getUserById = async (req, res) => {
-  const userId = req.params.id;
-
-  try {
-    const user = await UserModel.findById(userId);
-    if (user) {
-      res.status(200).json({
-        result: user,
-        message: "Success",
-      });
-    } else {
-      res.status(404).json("No such User");
-    }
-  } catch (error) {
-    res.status(500).json(error);
-  }
-};
 
 export const getUsers = async (req, res) => {
   try {
