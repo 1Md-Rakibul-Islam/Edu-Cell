@@ -132,7 +132,7 @@ export const resetPassword = async (req, res) => {
   try {
     const verify = jwt.verify(token, secret);
     // res.status(200).send('Verified');
-    res.render("index", {userId: verify.userId})
+    res.render("index", {userId: verify.userId, status: 'Not Verified'})
   } catch (error) {
     res.status(200).send('Not Verified');
   }
@@ -160,7 +160,7 @@ export const updatedPassword = async (req, res) => {
     )
     res.json({ status: "Password updated" })
     // res.status(200).send('Verified');
-    // res.render("index", { userId: verify.userId })
+    res.render("index", { userId: verify.userId, status: 'Verified' })
   } catch (error) {
     res.status(200).send('Not Verified');
   }
