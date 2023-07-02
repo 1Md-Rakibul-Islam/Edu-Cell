@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({ baseURL: "https://edu-cell.vercel.app" });
 // const API = axios.create({baseURL: 'https://edu-cell.vercel.app'});
 
 export const addUser = (data) => API.post("/users", data);
@@ -10,7 +10,7 @@ export const authData = (data) => API.post("/users/auth", data);
 export const resetPassword = async (userId) => {
   try {
     const response = await fetch(
-      "http://localhost:5000/users/forget-password",
+      "https://edu-cell.vercel.app/users/forget-password",
       {
         method: "POST",
         credentials: "include",

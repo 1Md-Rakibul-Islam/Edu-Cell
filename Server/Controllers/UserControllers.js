@@ -123,7 +123,7 @@ export const forgetPassword = async (req, res) => {
       secret,
       { expiresIn: "5m" }
     );
-    const resetPasswordLink = `http://localhost:5000/users/reset-password/${oldUser._id}/${token}`;
+    const resetPasswordLink = `https://edu-cell.vercel.app/users/reset-password/${oldUser._id}/${token}`;
 
     await sendEmail( oldUser.email, userId, {link: resetPasswordLink});
   } catch (error) {

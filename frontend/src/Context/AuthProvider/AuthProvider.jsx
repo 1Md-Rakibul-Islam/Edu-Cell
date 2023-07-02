@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch("http://localhost:5000/users/auth", {
+        const response = await fetch("https://edu-cell.vercel.app/users/auth", {
           method: "POST",
           credentials: "include",
           headers: {

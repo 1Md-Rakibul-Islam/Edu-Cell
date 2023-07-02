@@ -19,7 +19,7 @@ const ResetPass = () => {
       userId,
     };
 
-    fetch("http://localhost:5000/users/forget-password", {
+    fetch("https://edu-cell.vercel.app/users/forget-password", {
       method: "POST",
       crossDomain: true,
       headers: {
