@@ -33,7 +33,7 @@ export const generateUniquePassword = () => {
 };
 
 // Send email with user's login details
-export const sendEmail = async (email, userId, password) => {
+export const sendEmail = async (email, userId, auth) => {
   // Create a Nodemailer transporter
   // console.log("Node Email", email, userId, password);
   const transporter = nodemailer.createTransport({
@@ -47,12 +47,32 @@ export const sendEmail = async (email, userId, password) => {
     },
   });
 
+  // if (auth?.link) {
+  //   // Create the email message
+  //   const message = {
+  //     from: process.env.SMTP_MAIL,
+  //     to: email,
+  //     subject: "Reset Password Details",
+  //     text: `Your reset password details:\nUser ID: ${userId}\nClick the reset link: ${password}`,
+  //   };
+
+  //   if (auth?.pass) {
+  //     // Create the email message
+  //     const message = {
+  //       from: process.env.SMTP_MAIL,
+  //       to: email,
+  //       subject: "Login Details",
+  //       text: `Your login details:\nUser ID: ${userId}\nPassword: ${password}`,
+  //     };
+  //   }
+  // }
+
   // Create the email message
   const message = {
     from: process.env.SMTP_MAIL,
     to: email,
     subject: "Login Details",
-    text: `Your login details:\nUser ID: ${userId}\nPassword: ${password}`,
+    text: `Your ${auth?.pass ? "login" : "reset password"} details:\nUser ID: ${userId}\n${auth?.pass ? 'Password': "Reset password link"}: ${auth?.pass ? auth?.pass : auth?.link}`,
   };
 
   // Send the email

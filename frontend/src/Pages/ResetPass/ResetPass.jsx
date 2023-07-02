@@ -37,25 +37,32 @@ const ResetPass = () => {
         alert(data?.status)
     })
 
-    // resetPassword(userId);
-
     event.preventDefault();
   };
 
   return (
-    <div className="login">
+    <div className="reset">
       <div className="container">
         <div className="title">Password Reset</div>
         <form onSubmit={handleSubmit}>
           <div className="user__details">
             <div className="input__box">
-              <span className="details">User ID</span>
+              <span className="details">User ID(must)</span>
               <input
                 className=""
                 type="userId"
                 name="userId"
                 placeholder="Enter your User ID"
                 required
+              />
+            </div>
+            <div className="input__box">
+              <span className="details">Email(optional)</span>
+              <input
+                className=""
+                type="email"
+                name="email"
+                placeholder="Email is optional"
               />
             </div>
           </div>
