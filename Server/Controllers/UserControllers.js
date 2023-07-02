@@ -55,34 +55,6 @@ export const createUser = async (req, res) => {
   }
 };
 
-// creating a User
-// export const createUser = async (req, res) => {
-//   const newUser = new UserModel(req.body);
-//   const { userId, name, roll, email, password, department, semester } = req.body;
-//   const existingUser = await UserModel.findOne({ userId });
-//   console.log(userId, existingUser);
-//   // Password
-//   const bcryptedPassword = await bcryptjs.hash(password, 6);
-//   newUser.password = bcryptedPassword;
-//   // console.log("bcryPass", newUser);
-//   try {
-//     if (existingUser) {
-//       return res.status(400).json({ status: "User already exists" });
-//     } else {
-//       // Generate a unique userID
-//       // const userID = generateUserID();
-
-//       // // Generate a unique password
-//       // const password = generatePassword();
-
-//       await newUser.save(); // Inserting the new user into the database
-//       res.status(200).json({ status: "success" });
-//     }
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-// };
-
 // Login a user
 export const loginUser = async (req, res) => {
   const { userId, password } = req.body;
@@ -95,7 +67,7 @@ export const loginUser = async (req, res) => {
     return res.status(201).json({ error: "User not found" });
   }
   if (await bcryptjs.compare(password, user.password)) {
-    const token = jwt.sign({ userId: user.userId }, JWT_SECRET);
+    const token = jwt.sign({ userId: user.userId }, JWT_SECRET, {expiresIn: "1d"});
 
     if (res.status(201)) {
       return res.json({ status: "success", data: token });
@@ -111,17 +83,92 @@ export const getAuthData = async (req, res) => {
   const { token } = req.body;
 
   try {
-    const user = jwt.verify(token, JWT_SECRET);
+    const user = jwt.verify(token, JWT_SECRET, (err, res) => {
+      if (err) {
+        return "token expired"
+      }
+      return res
+    });
+    if (user == "token expired") {
+      return res.send({ status: "error", data: "token expired" })
+    }
     const userId = user.userId;
 
     const authenticatedUser = await UserModel.findOne({ userId });
-    console.log(authenticatedUser);
+    // console.log(authenticatedUser);
 
     res.status(200).json({ status: "success", data: authenticatedUser });
   } catch (error) {
     res.status(500).json({ error: error });
   }
 };
+
+// Forget Password
+export const forgetPassword = async (req, res) => {
+  const { userId } = req.body;
+  console.log('uID', userId);
+  try {
+    const oldUser = await UserModel.findOne({ userId });
+    if (!oldUser) {
+      return res.status(500).json({ status: 'User not found' });
+    }
+    const secret = JWT_SECRET + oldUser.password;
+    const token = jwt.sign({ userId: oldUser.userId, id: oldUser._id }, secret, { expiresIn: '2m' });
+    const link = `http://localhost:5000/users/reset-password/${oldUser._id}/${token}`;
+    console.log(link);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  const {id, token} = req.params;
+  // console.log(req.params);
+  const oldUser = await UserModel.findOne({ _id: id })
+  if (!oldUser) {
+    return res.json({ status: 'User not found' })
+  }
+  const secret = JWT_SECRET + oldUser.password;
+  try {
+    const verify = jwt.verify(token, secret);
+    // res.status(200).send('Verified');
+    res.render("index", {userId: verify.userId})
+  } catch (error) {
+    res.status(200).send('Not Verified');
+  }
+}
+
+export const updatedPassword = async (req, res) => {
+  const {id, token} = req.params;
+  const {password} = req.body;
+  // console.log(req.params);
+  const oldUser = await UserModel.findOne({ _id: id })
+  if (!oldUser) {
+    return res.json({ status: 'User not found' })
+  }
+  const secret = JWT_SECRET + oldUser.password;
+  try {
+    const verify = jwt.verify(token, secret);
+    const encryptedPassword = await bcryptjs.hash(password, 6)
+    await UserModel.updateOne(
+      {_id: id},
+      {
+        $set: {
+          password: encryptedPassword
+        }
+      }
+    )
+    res.json({ status: "Password updated" })
+    // res.status(200).send('Verified');
+    // res.render("index", { userId: verify.userId })
+  } catch (error) {
+    res.status(200).send('Not Verified');
+  }
+}
+
+
+
+
 
 // Update a User
 export const updateUser = async (req, res) => {

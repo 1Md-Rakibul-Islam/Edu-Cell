@@ -7,6 +7,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Home from "../../Pages/Home/Home";
 import Profile from "../../Pages/Profile/Profile";
 import ContactUs from "../../Components/ContactUs/ContactUs";
+import ResetPass from "../../Pages/ResetPass/ResetPass";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/reset",
+        element: <ResetPass />,
       },
       {
         path: "*",

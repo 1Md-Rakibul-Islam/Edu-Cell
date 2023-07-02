@@ -1,66 +1,69 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { loginUser } from "../../API/userRequest";
+import { loginUser, resetPassword } from "../../API/userRequest";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
-const Login = () => {
+const ResetPass = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
-  const { signIn, loading } = useContext(AuthContext);
+  //   const { signIn, loading } = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const user = new FormData(event.currentTarget);
     const userId = user.get("userId");
-    const password = user.get("password");
-    // console.log(userId, password);
 
     const userData = {
       userId,
-      password,
     };
-    // console.log(user);
-    await signIn(userData);
-    if (window.localStorage.getItem("loggedin")) {
-    navigate(from, { replace: true });
-    }
+
+    fetch("http://localhost:5000/users/forget-password", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        userId,
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        alert(data?.status)
+    })
+
+    // resetPassword(userId);
+
     event.preventDefault();
   };
-
-  // console.log(user);
 
   return (
     <div className="login">
       <div className="container">
-        <div className="title">Login</div>
+        <div className="title">Password Reset</div>
         <form onSubmit={handleSubmit}>
           <div className="user__details">
             <div className="input__box">
               <span className="details">User ID</span>
               <input
+                className=""
                 type="userId"
                 name="userId"
                 placeholder="Enter your User ID"
                 required
               />
             </div>
-            <div className="input__box">
-              <span className="details">Password</span>
-              <input
-                type="password"
-                name="password"
-                placeholder="********"
-                required
-              />
-            </div>
           </div>
           <button type="submit" className="btn-primary">
-            Sign In
+            Submit
           </button>
           <div className="signup__link">
-            <Link to="/reset">Reset Password?</Link>
+            <Link to="/login">Login now?</Link>
           </div>
         </form>
       </div>
@@ -68,4 +71,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ResetPass;

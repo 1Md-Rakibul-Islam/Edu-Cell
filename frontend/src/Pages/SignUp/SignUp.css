@@ -6,7 +6,8 @@
   }
 
   .signup,
-  .login {
+  .login,
+  .reset {
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -74,6 +75,10 @@
     transition: all 0.3s ease;
   }
 
+  .input__box_full {
+    width: 200px;
+  }
+
   .user__details .input__box input:focus,
   .user__details .input__box input:valid {
     border-color: var(--main-purple);
@@ -97,6 +102,13 @@
 
   .btn-primary:hover {
     background: linear-gradient(-135deg, var(--main-blue), var(--main-purple));
+  }
+
+  .signup__link {
+    margin-top: 1rem;
+  }
+  .signup__link:hover {
+    text-decoration: underline;
   }
 
   @media only screen and (max-width: 584px) {

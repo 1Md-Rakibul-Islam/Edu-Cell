@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./SignUp.css";
 import { addUser } from "../../API/userRequest";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 const SignUp = () => {
@@ -30,14 +30,12 @@ const SignUp = () => {
     };
     // console.log(user);
 
-
     // console.log(user);
     await signUp(userData);
     if (window.localStorage.getItem("loggedin")) {
       toast.success("Account Created Successfully");
       navigate(from, { replace: true });
     }
-
   };
 
   return (
@@ -106,6 +104,9 @@ const SignUp = () => {
           <button type="submit" className="btn-primary">
             Submit
           </button>
+          <div className="signup__link">
+            <Link to="/login">Login Now?</Link>
+          </div>
         </form>
       </div>
     </div>

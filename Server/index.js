@@ -7,7 +7,8 @@ dotenv.config();
 
 const port = process.env.PORT || 5000;
 const app = express();
-
+app.set("view engine", "ejs")
+app.use(express.urlencoded({extended: false}))
 // middleware
 app.use(
   cors({
